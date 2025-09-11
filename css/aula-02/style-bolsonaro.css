@@ -1,0 +1,55 @@
+h1{
+    text-align: center;
+    text-decoration: underline;
+    color: rgb(0, 0, 0);
+ }
+ h2{
+     border: 2px, black;
+     text-align: center;
+     color: rgb(0, 0, 0);
+ 
+ }
+ 
+ *{
+ 
+     text-align: center;
+ }
+ .a{
+  width: 60%;
+  margin: 0 auto;
+  border: 1px solid rgb(0, 0, 0);
+  text-align: center;
+  
+ 
+ }
+ 
+ p{
+     width: 60%;
+     margin: 10 auto;
+     text-align: center;
+ 
+ }
+ img {
+    box-shadow: 5px 5px 10px gray;
+    border: 10px solid pink;
+    }
+*{
+    text-align: center;
+}
+.b{
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid rgb(0, 0, 0);
+}
+.c{
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+body{
+    background-color: aquamarine,;
+    animation: alternate;
+}
+.c{
+    text-align: center;
+}

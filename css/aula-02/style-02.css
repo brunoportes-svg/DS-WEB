@@ -1,0 +1,36 @@
+h1{
+   text-align: center;
+   text-decoration: underline;
+   color: white;
+}
+h2{
+    border: 2px, black;
+    text-align: center;
+    color: white;
+
+}
+
+*{
+
+    text-align: center;
+}
+div{
+ width: 60%;
+ margin: 0 auto;
+ border: 1px solid rgb(255, 255, 255);
+ text-align: center;
+ 
+
+}
+
+p{
+    width: 60%;
+    margin: 10 auto;
+
+}
+img{
+    align-items: right;
+}
+body{
+    background-color: black;
+}

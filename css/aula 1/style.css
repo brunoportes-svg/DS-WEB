@@ -1,0 +1,17 @@
+/* comentario em css */
+/* seletores de css*/
+div{
+    color: rgb(118, 2, 251);
+}
+
+*{
+    color: rgb(69, 208, 208);
+}
+
+body{
+    background:linear-gradient(to right, black, rgb(200, 25, 25), green);
+}
+a{
+    color: rgb(0, 243, 190);
+    
+}
