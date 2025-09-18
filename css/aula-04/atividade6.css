@@ -1,0 +1,13 @@
+.car{
+   border: 2px solid black;
+    width: 100%;
+    height: 150px;
+}
+.mot{
+    border: 2px solid black;
+    width: 400px;
+    height: 80px;
+    padding: 20px;
+    background-color: blue;
+    display: inline-block;
+}

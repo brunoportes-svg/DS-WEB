@@ -1,0 +1,81 @@
+div{
+
+    width: 70px;
+    height: 70px;
+
+    
+}
+
+.car{
+    width: 300px;
+   margin: 10px;
+}
+
+.div1 {
+    display: inline-block;
+    border: 5px solid black;
+    background-color: aqua;
+    margin: ;
+   
+}
+
+.div2{
+    display: inline-block;
+    border: 5px solid black;
+    background-color: blueviolet;
+    border-style: dotted;
+}
+.div3{
+    display: inline-block;
+    border: 5px solid black;
+    background-color: crimson;
+    border-style: double;
+}
+
+
+
+.mot{
+    width: 300px;
+    margin: 10px;
+}
+
+.div4{
+    display: inline-block;
+    border: 5px solid black;
+    background-color: darkgreen;
+    border-style: dotted;
+}
+.div5{
+    display: inline-block;
+    border: 5px solid black;
+    background-color: burlywood;
+}
+.div6{
+    display: inline-block;
+    border: 5px solid black;
+    background-color: lime;
+    border-style: dotted;
+}
+
+.bik{
+    width: 300px;
+    margin: 10px;
+}
+
+.div7{
+    display: inline-block;
+    border: 5px solid black;
+    background-color: chocolate;
+    border-style: double;
+}
+.div8{
+    display: inline-block;
+    border: 5px solid black;
+    background-color: violet;
+    border-style: dotted;
+}
+.div9{
+    display: inline-block;
+    border: 5px solid black;
+    background-color: darkkhaki;
+}

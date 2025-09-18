@@ -1,0 +1,16 @@
+div{
+    border: 2px solid black;
+}
+
+
+.car{
+    width: 400px;
+    height;: 300px;
+    padding: 100px;
+}
+
+.mot{
+    width: 200px;
+    height: 100px;
+    margin: auto;
+}

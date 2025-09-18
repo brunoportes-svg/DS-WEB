@@ -1,0 +1,39 @@
+
+.box{
+background-color: aqua;
+height: 100px;;
+width: 100px;
+
+padding: 10px;
+
+border: 2px solid black;
+
+margin: 10px;
+}
+
+.box2{
+    background-color: blue;
+    height: 100px;
+    width: 100px;
+    border: 2px solid yellow;
+
+    margin: 10px;
+
+    padding: 10px;
+}
+
+.div-centralizada{
+    margin: 0 auto;
+    width: 300px;
+}
+
+.conteudo1{
+    width: 100px;
+    margin: 0 auto;
+}
+
+.conteudo2{
+   display: inline-block;
+    width: 100ppx
+    margin: 0 auto;
+}

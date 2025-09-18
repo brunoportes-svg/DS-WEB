@@ -1,0 +1,14 @@
+div{
+    border: 2px solid black;
+    height: 40px;
+    width: 120px;
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+}
+
+.car{
+    border: 2px solid black;
+    height: 50px;
+    width: 600px;
+}
