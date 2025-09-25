@@ -1,0 +1,60 @@
+
+.b{
+    height: 20px;
+    width: 20px; 
+    background-color: aqua;
+    display: inline-block; 
+    position: sticky;  top: 0px; 
+
+
+}
+.r{
+    height: 20px;
+    width: 20px; 
+    background-color: blue;
+    display: inline-block;
+    position: sticky;  top: 0px;
+    left: 25px;
+
+   
+}
+
+.u{
+    height: 20px;
+    width: 20px; 
+    background-color: brown;
+    display: inline-block;
+    position: sticky;    top: 0px;
+    left: 40px;
+
+   
+}
+
+.n{
+    height: 20px;
+    width: 20px; 
+    background-color: rgb(58, 19, 201);
+    display: inline-block;
+    position: sticky;   top: 0px;
+    left: 60px;
+ 
+}
+.o{
+    height: 20px;
+    width: 20px; 
+    background-color: blueviolet;
+    display: inline-block;
+    position: sticky; top: 0px;
+    left: 80px;
+
+}
+
+.ab{
+    height: 10000px;
+  width: 10000px;
+
+}
+
+.espaço{
+    padding: 10px;
+}

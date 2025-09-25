@@ -1,0 +1,12 @@
+.caixa{
+    height: 60;
+    background-color: cadetblue;
+    text-align: center;
+    position: sticky; top: 0;
+}
+
+.quadrado{
+    height: 1000px;
+    background-color: black;
+    width: 100px;
+}
