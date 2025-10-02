@@ -1,0 +1,52 @@
+a{
+    color: white;
+    text-decoration: none;
+    
+ }
+
+
+
+
+.cardapio{
+    height: 50px;
+    background-color: rgb(249, 137, 0);
+    text-align: center;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0; width: 100%; height: 100px;
+}
+
+.aces{
+    margin-top: -70px;
+   margin-left: 1200px;
+   text-decoration: double;
+   
+}
+
+.image{
+    top: 7000px;
+}
+
+table{
+    align-items: center;
+}
+
+.titulo{
+    color: blueviolet;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: larger;
+    text-align: center;
+}
+
+.subtitulo{
+    color: blueviolet;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: larger;
+    text-align: center;
+    height: 1000px;
+    
+}
+
+
+
