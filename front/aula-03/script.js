@@ -5,8 +5,9 @@ function adicionar(){
 
   contadorItem ++
 let novoItem = document.createElement('li');
+let novaTarefa = document.getElementById('novaTarefa').value;
 
-novoItem.textContent = contadorItem + " - " + prompt("Digite o texto do novo item:");
+novoItem.textContent = contadorItem + " - " + novaTarefa;
 
 novoItem.setAttribute('id',  contadorItem);
 
