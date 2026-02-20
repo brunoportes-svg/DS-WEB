@@ -6,25 +6,25 @@ function adicionar(){
 let novoItem = document.createElement('li');
 let nome = document.getElementById('nome').value;
 
-novoItem.innerHTML +=  "Seu nome é: " + nome + "<br>";
+novoItem.innerHTML +=  "Seu nome é: " + nome + "<br>" + "<hr>";
 ////////////////////////////////////////////////////////////////////////////////////////////
 let email = document.getElementById('email').value;
 
-novoItem.innerHTML += "seu email é: " + email + "<br>";
+novoItem.innerHTML += "seu email é: " + email + "<br>" + "<hr>";
 ////////////////////////////////////////////////////////////////////////////////////////////
 let numero = document.getElementById('numero').value;
 
-novoItem.innerHTML += "Seu RM é: " + numero + "<br>";
+novoItem.innerHTML += "Seu RM é: " + numero + "<br>" + "<hr>";
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 let telefone = document.getElementById('telefone').value;
 
-novoItem.innerHTML +=  "Seu telefone é: " + telefone + "<br>";
+novoItem.innerHTML +=  "Seu telefone é: " + telefone + "<br>" + "<hr>";
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 let turma = document.getElementById('turma').value;
 
-novoItem.innerHTML += "Sua turma é: " + turma + "<br>";
+novoItem.innerHTML += "Sua turma é: " + turma + "<br>" + "<hr>";
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 novoItem.setAttribute('id',  contadorItem);
