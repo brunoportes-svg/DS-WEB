@@ -10,7 +10,7 @@ novoItem.innerHTML +=  "Seu nome é: " + nome + "<br>";
 ////////////////////////////////////////////////////////////////////////////////////////////
 let email = document.getElementById('email').value;
 
-novoItem.innerHTML +=  email ;
+novoItem.innerHTML += "seu email é: " + email + "<br>";
 ////////////////////////////////////////////////////////////////////////////////////////////
 let numero = document.getElementById('numero').value;
 
