@@ -1,49 +1,46 @@
-//=============================== eventos do mause================================//
+const quadrado = document.getElementById("quadrado");
+const pontuacaoTexto = document.getElementById("pontuacao");
+const som = document.getElementById("somAssustador");
 
-var area = document.getElementById("area");
-var mensagem = document.getElementById("mensagem");
+let pontos = 0;
+let tocou = false;
 
-area.addEventListener("click", function(){
-   area.style.backgroundImage = "url('sonicgay.jpg')";
-area.style.backgroundSize = "100% 100%";
+function atualizarPontuacao() {
+  pontuacaoTexto.textContent = "Pontos: " + pontos;
+
+  if (pontos >= 50 && !tocou) {
+    quadrado.style.width = "100vw";
+    quadrado.style.height = "100vh";
+    quadrado.style.left = "0";
+    quadrado.style.top = "0";
+
+    som.play();
+    tocou = true; // evita tocar várias vezes
+  } else if (pontos < 100) {
+    moverQuadrado();
+  }
+}
+
+function moverQuadrado() {
+  const larguraTela = window.innerWidth - quadrado.offsetWidth;
+  const alturaTela = window.innerHeight - quadrado.offsetHeight;
+
+  const novaPosicaoX = Math.random() * larguraTela;
+  const novaPosicaoY = Math.random() * alturaTela;
+
+  quadrado.style.left = novaPosicaoX + "px";
+  quadrado.style.top = novaPosicaoY + "px";
+}
+
+quadrado.addEventListener("click", function(event) {
+  event.stopPropagation();
+  pontos += 10;
+  atualizarPontuacao();
 });
 
-area.addEventListener("dblclick", function(){
-    area.style.backgroundImage = "url('super.jpg')";
-area.style.backgroundSize = "100% 100%";
+document.body.addEventListener("click", function() {
+  pontos -= 20;
+  atualizarPontuacao();
 });
 
-
-area.addEventListener("mouseenter", function(){
-
-    //verificando a cor atual para poder alterar a cor
-   area.style.backgroundImage = "url('download.jpg')";
-area.style.backgroundSize = "100% 100%";
-});
-
-
-area.addEventListener("mouseleave", function(){
-area.style.backgroundImage = "url('sonic.jpeg')";
-area.style.backgroundSize = "100% 100%";
-});
-
-
-
-area.addEventListener("contextmenu", function(event){
-event.preventDefault();
-alert("Botão direito clicado!");
-});
-//=============================== eventos da teclado ================================//
-
-
-document.addEventListener("keydown", function(event){
-// Exibe a tecla pressionada
-var campo = document.getElementById("resultado");
-campo.textContent = "Tecla pressionada: " + event.key;
-// Também mostra no console
-console.log("Tecla pressionada: " + event.key);
-});
-
-
-
-
+moverQuadrado();
