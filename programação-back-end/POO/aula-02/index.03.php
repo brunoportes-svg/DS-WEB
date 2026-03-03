@@ -7,9 +7,7 @@ class veiculo {
 
 
 
- function getVelocidade($velocidade) {
-        return "20km/h";
-    }
+
 
  function setVelocidade($velocidade){
         echo "sua velocidade é de " . $this->getVelocidade();
@@ -19,13 +17,13 @@ class veiculo {
 
 class Carro extends veiculo {
     function acelerarCarro($velocidade){
-        echo "o carro é acelerado pelo pedal" . $velocidade . "km/h";
+        echo "o carro é acelerado pelo pedal: " . $velocidade . "km/h";
     }
 }
 
 class Moto extends veiculo {
  function acelerarMoto($velocidade){
-    echo "a moto é acelerada pelo acelerador" . $velocidade . "km/h";
+    echo "a moto é acelerada pelo acelerador: " . $velocidade . "km/h";
 }
 }
 

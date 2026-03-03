@@ -18,7 +18,7 @@ $sapo = new sapo();
 $sapo->fazerSom();
 echo "<br/>";
 $sapo->mover();
-echo "<br/>";
+echo "<br/> ============================== <br/>"  ;
 
 class cavalo extends animal {
     public function fazerSom() {
@@ -32,7 +32,7 @@ $cavalo = new cavalo();
 $cavalo->fazerSom();
 echo "<br/>";
 $cavalo->mover();
-echo "<br/>";
+echo "<br/> ============================== <br/>"  ;
 
 class tartaruga extends animal {
     public function fazerSom() {
