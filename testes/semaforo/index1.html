@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Semáforo Realista</title>
+</head>
+
+<body>
+
+<h2>Controle do Semáforo</h2>
+
+<!-- Botões para mudar manualmente -->
+<button onclick="setCor(0)">Verde</button>
+<button onclick="setCor(1)">Amarelo</button>
+<button onclick="setCor(2)">Vermelho</button>
+
+<br/><br/>
+
+<!-- Botões para velocidade -->
+<button onclick="setVelocidade('rapida')">Rápida</button>
+<button onclick="setVelocidade('normal')">Normal</button>
+<button onclick="setVelocidade('lenta')">Lenta</button>
+
+<br/><br/>
+<img id="imagem" src="verde.svg" width="200" />
+
+<script>
+let estado = 0; // 0=verde, 1=amarelo, 2=vermelho
+let intervalo;
+let tempos = [15000, 4000, 15000]; // verde, amarelo, vermelho
+
+// Função para trocar o semáforo automaticamente
+function trocar() {
+  estado = (estado + 1) % 3;
+  mostrarCor(estado);
+  clearInterval(intervalo);
+  intervalo = setInterval(trocar, tempos[estado]);
+}
+
+// Mostra a cor correta
+function mostrarCor(cor) {
+  if (cor === 0) document.getElementById("imagem").src = "verde.svg";
+  else if (cor === 1) document.getElementById("imagem").src = "amarelo.svg";
+  else document.getElementById("imagem").src = "vermelho.svg";
+}
+
+// Muda cor manualmente e reinicia o intervalo
+function setCor(cor) {
+  estado = cor;
+  mostrarCor(estado);
+  clearInterval(intervalo);
+  intervalo = setInterval(trocar, tempos[estado]);
+}
+
+// Muda velocidade do semáforo
+function setVelocidade(tipo) {
+  if (tipo === 'rapida') tempos = [10000, 3000, 10000];   // verde, amarelo, vermelho
+  else if (tipo === 'normal') tempos = [15000, 5000, 15000];
+  else if (tipo === 'lenta') tempos = [20000, 7000, 20000];
+
+  clearInterval(intervalo);
+  intervalo = setInterval(trocar, tempos[estado]);
+}
+
+// Inicia o ciclo automático
+intervalo = setInterval(trocar, tempos[estado]);
+</script>
+
+</body>
+</html>
