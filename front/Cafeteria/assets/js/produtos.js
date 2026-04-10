@@ -11,11 +11,22 @@ var botaoEnviar      = document.getElementById("botaoEnviar");
 // Eventos
 // =========================
 document.addEventListener('DOMContentLoaded', async () => {
-    await carregarCategorias(); // Preenche o select de categorias
-    getProdutos();              // Lista produtos
+    await carregarCategorias();
+    getProdutos();
+
+    // Limpar erros ao digitar
+    inputNome.addEventListener('input', limparErro);
+    inputPreco.addEventListener('input', limparErro);
+    selectCategoria.addEventListener('change', limparErro);
 });
 
 botaoEnviar.addEventListener('click', postProduto);
+
+function limparErro() {
+    const erroDiv = document.getElementById('erro-produto');
+    erroDiv.textContent = '';
+    erroDiv.style.color = 'red';
+}
 
 // =========================
 // FUNÇÃO: Carregar Categorias
@@ -25,20 +36,37 @@ async function carregarCategorias() {
         var requisicao = await fetch("http://localhost/cafeteria-api/categorias");
         var resposta = await requisicao.json();
 
+        console.log("CATEGORIAS:", resposta);
+
+        // Caso a API retorne { status, data }
         if (resposta.status === "success") {
             selectCategoria.innerHTML = '<option value="">Selecione a categoria</option>';
+
             resposta.data.forEach(cat => {
                 var option = document.createElement("option");
                 option.value = cat.id;
                 option.textContent = cat.nome;
                 selectCategoria.appendChild(option);
             });
+
+        } 
+        // Caso retorne array direto
+        else if (Array.isArray(resposta)) {
+            selectCategoria.innerHTML = '<option value="">Selecione a categoria</option>';
+
+            resposta.forEach(cat => {
+                var option = document.createElement("option");
+                option.value = cat.id;
+                option.textContent = cat.nome;
+                selectCategoria.appendChild(option);
+            });
+
         } else {
-        
+            console.error("Formato inesperado de categorias");
         }
+
     } catch (erro) {
         console.error("Erro ao buscar categorias:", erro);
- 
     }
 }
 
@@ -52,7 +80,6 @@ async function getProdutos() {
 
         console.log("PRODUTOS:", resposta);
 
-        // Se não for array, mostrar erro
         if (!Array.isArray(resposta)) {
             divResposta.innerHTML = "Erro ao carregar produtos";
             return;
@@ -89,6 +116,7 @@ async function getProdutos() {
                 </tbody>
             </table>
         `;
+
     } catch (erro) {
         console.error("Erro ao buscar produtos:", erro);
         divResposta.innerHTML = "Erro ao carregar produtos";
@@ -99,8 +127,29 @@ async function getProdutos() {
 // FUNÇÃO: Cadastrar Produto (POST)
 // =========================
 async function postProduto() {
-    if (!inputNome.value || !inputPreco.value || !selectCategoria.value) {
-   
+    const erroDiv = document.getElementById('erro-produto');
+    erroDiv.textContent = '';
+    erroDiv.style.color = 'red';
+
+    const nome = inputNome.value.trim();
+    const preco = inputPreco.value.trim();
+    const categoria = selectCategoria.value;
+
+    if (!nome) {
+        erroDiv.textContent = 'Nome do produto é obrigatório!';
+        inputNome.focus();
+        return;
+    }
+
+    if (!preco || isNaN(preco) || parseFloat(preco) <= 0) {
+        erroDiv.textContent = 'Preço deve ser um número maior que 0!';
+        inputPreco.focus();
+        return;
+    }
+
+    if (!categoria) {
+        erroDiv.textContent = 'Selecione uma categoria!';
+        selectCategoria.focus();
         return;
     }
 
@@ -109,29 +158,35 @@ async function postProduto() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                nome: inputNome.value,
-                preco: inputPreco.value,
-                categoria_id: selectCategoria.value
+                nome: nome,
+                preco: preco,
+                categoria_id: categoria
             })
         });
 
         var resposta = await requisicao.json();
-
         console.log("POST:", resposta);
 
-   
+        // Mensagem de sucesso
+        erroDiv.style.color = 'green';
+        erroDiv.textContent = 'Produto cadastrado com sucesso!';
 
         // Limpar campos
         inputNome.value = "";
         inputPreco.value = "";
         selectCategoria.value = "";
 
-        // Atualizar lista de produtos
+        // Atualizar lista
         getProdutos();
+
+        setTimeout(() => {
+            erroDiv.textContent = '';
+        }, 3000);
 
     } catch (erro) {
         console.error("Erro ao cadastrar produto:", erro);
-      
+        erroDiv.style.color = 'red';
+        erroDiv.textContent = 'Erro ao cadastrar. Tente novamente.';
     }
 }
 
@@ -142,20 +197,16 @@ async function deleteProduto(id) {
     if (!confirm("Deseja realmente deletar este produto?")) return;
 
     try {
-        var requisicao = await fetch("http://localhost/cafeteria-api/produtos?id=" + id, {
+        var requisicao = await fetch(`http://localhost/cafeteria-api/produtos?id=${id}`, {
             method: "DELETE"
         });
 
         var resposta = await requisicao.json();
-
         console.log("DELETE:", resposta);
-
-       
 
         getProdutos();
 
     } catch (erro) {
         console.error("Erro ao deletar produto:", erro);
-       
     }
 }

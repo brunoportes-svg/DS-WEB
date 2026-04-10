@@ -3,7 +3,14 @@ var divResposta = document.getElementById("resposta")
 
 var inputNome   = document.getElementById("nome")
 
-document.addEventListener('DOMContentLoaded', getCategorias)
+document.addEventListener('DOMContentLoaded', () => {
+    getCategorias();
+
+    // Clear error on input
+    inputNome.addEventListener('input', () => {
+        document.getElementById('erro-categoria').textContent = '';
+    });
+});
 document.getElementById('botaoEnviar').addEventListener('click', postCategoria)
 
 async function getCategorias() {
@@ -44,18 +51,46 @@ async function getCategorias() {
 
 
 async function postCategoria() {
-    var requisicao = await fetch("http://localhost/cafeteria-api/categorias", {
-        method:  "POST",
-        body:    JSON.stringify({ nome: inputNome.value })
-    })
+    const erroDiv = document.getElementById('erro-categoria');
+    erroDiv.textContent = '';
 
-    var resposta = await requisicao.json()
-    console.log(resposta)
-    
-    //Limpa o campo
-    inputNome.value = ""
+    const nome = inputNome.value.trim();
 
-    getCategorias()
+    if (!nome) {
+        erroDiv.textContent = 'Nome da categoria é obrigatório!';
+        inputNome.focus();
+        return;
+    }
+
+    try {
+        var requisicao = await fetch("http://localhost/cafeteria-api/categorias", {
+            method:  "POST",
+            headers: { "Content-Type": "application/json" },
+            body:    JSON.stringify({ nome: nome })
+        })
+
+        var resposta = await requisicao.json()
+        console.log(resposta)
+        
+        // Mostrar sucesso
+        erroDiv.style.color = 'green';
+        erroDiv.textContent = 'Categoria cadastrada com sucesso!';
+
+        //Limpa o campo
+        inputNome.value = ""
+
+        getCategorias()
+
+        // Limpar mensagem após 3s
+        setTimeout(() => {
+            erroDiv.textContent = '';
+        }, 3000);
+
+    } catch (erro) {
+        console.error('Erro ao cadastrar categoria:', erro);
+        erroDiv.style.color = 'red';
+        erroDiv.textContent = 'Erro ao cadastrar. Tente novamente.';
+    }
 }
 
 
